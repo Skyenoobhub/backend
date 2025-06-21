@@ -1,0 +1,46 @@
+Array
+(
+    [nama_paket] => Stone Garden
+    [harga] => 250000.00
+    [deskripsi] => Tau gak kalau ada taman batu yang diduga dulunya merupakan lautan?  ternyata itu loh sejarah dari stone garden di bandung. di trip ini kita menikmati pemandangan kota bandung di antara bukit batuan ini. kemudian, kita akan mengunjungi goa pawon di mana terdapat fosil kerangka 7 manusia purba yang berasal dari 5.000 - 12.000 tahun silam. penasaran? join tripnya minggu ini!
+    [rincian] => Berkumpul di Meeting Point (07:00)
+- Exit Tol Pasteur (Long Day Trip)
+- Exit Tol Buah Batu (Long Trip)
+- Exit Tol Soraja (Long Trip)
+
+- Stone Garden (09:30)
+
+tiba di stone garden & explore stone garden
+
+- Goa Pawon (12:15)
+
+Tiba di goa Pawon & Explore Goa pawon
+
+- Perjalanan Menuju Pusat Oleh-oleh (15:00)
+
+Di Tempat oleh-oleh ini banyak menjual makanan ringan yang sangat cocok dijadikan untuk oleh-oleh bagi orang terdekat
+
+- Perjalanan kembali ke meeting point (19:00)
+
+perjalanan kembali menuju meeting point, dan sampai ketemu di trip berikut nya
+    [fasilitas] => Paket tour termasuk :
+
+- Transportasi PP bus white horse
+
+- Tour Leader
+
+- Tiket wisata stone garden 
+
+- Tiket wisata goa pawon
+
+- free air kelapa 1x
+
+Paket Tour tidak termasuk :
+
+- Makan
+- tip kru sukarela 
+
+*note 
+minimal keberangkatan 10 orang
+    [nama_user] => edward
+)

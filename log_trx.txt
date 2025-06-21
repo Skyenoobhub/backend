@@ -1,0 +1,16 @@
+==== REQUEST MASUK ====
+RAW JSON: {
+  "order_id": "ORDER123",
+  "nama_paket": "Paket Test",
+  "harga": "250000.00",
+  "status": "success"
+}
+DECODED: Array
+(
+    [order_id] => ORDER123
+    [nama_paket] => Paket Test
+    [harga] => 250000.00
+    [status] => success
+)
+
+Data berhasil disimpan
