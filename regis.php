@@ -2,9 +2,9 @@
 header('Content-Type: application/json');
 
 $servername = "localhost";
-$username = "root";  // Sesuaikan dengan pengaturan MySQL Anda
-$password = "";      // Sesuaikan dengan pengaturan MySQL Anda
-$dbname = "travelapps"; // Pastikan ini sesuai dengan nama database Anda
+$username = "root";  
+$password = "";     
+$dbname = "travelapps"; 
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);

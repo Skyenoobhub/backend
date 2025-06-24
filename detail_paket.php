@@ -7,9 +7,9 @@ header('Access-Control-Allow-Origin: *'); // Allow CORS
 header('Content-Type: application/json');
 
 $servername = "localhost";
-$username = "root";  // Ganti sesuai pengaturan MySQL Anda
-$password = "";      // Ganti sesuai pengaturan MySQL Anda
-$dbname = "travelapps"; // Pastikan ini sesuai dengan nama database Anda
+$username = "root";  
+$password = "";      
+$dbname = "travelapps"; 
 
 // Buat koneksi
 $conn = new mysqli($servername, $username, $password, $dbname);
