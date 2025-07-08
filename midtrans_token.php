@@ -42,7 +42,7 @@ if ($nama_paket && $harga) {
         ]],
         'customer_details' => [
             'first_name' => $nama_user,
-            'email' => 'user@mail.com',
+            'email' => 'edward@gmail.com',
             'phone' => '081234567890'
         ]
     ];

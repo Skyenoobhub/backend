@@ -11,60 +11,46 @@ kita akan menginjungi 2 air terjun, curug putri, dan curug tilu. sepanjangan per
 Di curug tilu, kalian bisa berendam di aliran sungai.
 
 siapkan pakaian ganti, alas kaki sepatu dan sendal gunung yang nyaman, trekking pole (bila perlu), jaket dan jas hujan. jangan lupa bawa minum dan snack untuk menjaga stamina selama trekking.
-    [rincian] => -Berkumpul di Meeting Point (06:30)
+    [rincian] => 1. Berkumpul di Meeting Point (06:30)
 
-Exit Tol Pasteur (Long Day Trip)
-exit Tol Buah Batu (Long Trip)
-Exit Tol Soraja (Long Trip)
-
-- Ciwangun Indah Camp (09:30)
+2. Tiba di Ciwangun Indah Camp (09:30)
 
 Perkiraan tiba di base camp CIC dan persiapan untuk melakukan trekking
 
-Start Trekking (10:00)
+3. Start Trekking (10:00)
 
 Start Trekking dengan Rute melewati beberapa tempat :
-- curug Putri
-- curug Golosor
-- curug tilu
-- hutan pinus 
-- goa tokek
-- perkebunan teh
+1. curug Putri
+2. curug Golosor
+3. curug tilu
+4. hutan pinus 
+5. goa tokek
+6. perkebunan teh
 
-Perjalanan Menuju Pusat Oleh-oleh (15:00)
+4. Perjalanan Menuju Pusat Oleh-oleh (15:00)
 
 di tempat oleh-oleh ini banyak menjual makanan ringan yang sangat cocok dijadikan untuk oleh-oleh bagi orang terdekat.
 
-Perjalanan kembali ke meeting point (16:00)
+5. Perjalanan kembali ke meeting point (16:00)
 
-perjalanan kembali ke meeting point dan trip selesai.
+Perjalanan kembali ke meeting point dan trip selesai.
     [fasilitas] => Paket tour termasuk :
 
-- Transportasi dengan bus/hiace white horse
-driver, BBM, Tol & Parkir
-
-- tiket masuk ciwangun indah camp
-
-- kunjungan curug putri
-
-- kunjungan curug tilu
-
-- kunjungan hutan pinus
-
-- kunjungan goa tokek
-
-- kunjungan perkebunan teh
-
-- Guide lokal selama trekking
-
-- Tour Leader
+1. Transportasi dengan bus/hiace
+2. driver, BBM, Tol & Parkir
+3. tiket masuk ciwangun indah camp
+4. kunjungan curug putri
+5. kunjungan curug tilu
+6. kunjungan hutan pinus
+7. kunjungan goa tokek
+8. kunjungan perkebunan teh
+9. Guide lokal selama trekking
+10. Tour Leader
 
 Paket Tour tidak termasuk :
 
-- penambahan destinasi diluar program
-
-- pengeluaran keperluan pribadi selama perjalanan
-
-- tipping tour leader dan driver
+1. penambahan destinasi diluar program
+2. pengeluaran keperluan pribadi selama perjalanan
+3. tipping tour leader dan driver
     [nama_user] => 
 )
