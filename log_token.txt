@@ -1,56 +1,36 @@
 Array
 (
-    [nama_paket] => Fun Trekking Ciwangun Indah
-    [harga] => 350000.00
-    [deskripsi] => Trekking santai di Bandung! mau liburan ke alam tapi bosan sama yang itu-itu aja? tempat ini masih jarang diketahui dan alami. 
+    [nama_paket] => Stone Garden
+    [harga] => 250000.00
+    [deskripsi] => Tau gak kalau ada taman batu yang diduga dulunya merupakan lautan?  ternyata itu loh sejarah dari stone garden di bandung. di trip ini kita menikmati pemandangan kota bandung di antara bukit batuan ini. kemudian, kita akan mengunjungi goa pawon di mana terdapat fosil kerangka 7 manusia purba yang berasal dari 5.000 - 12.000 tahun silam. penasaran? join tripnya minggu ini!
+    [rincian] => 1. Berkumpul di Meeting Point (07:00)
 
-kita akan menyusuri sungai, menyebrang dengan jembatan kayu atau bambu, dan naik turun jalan berbatu. pastikan kamu memakai sepatu yang nyaman ya. jalan menuju curug berada di lembah dengan tebing di kiri dan kanan. suasananya sejuk dan alami banget. hati-hati karena jalannya licin dan berlumut.
+2. Stone Garden (09:30)
 
-kita akan menginjungi 2 air terjun, curug putri, dan curug tilu. sepanjangan perjalanan mata akan dimanjakan dengan kebun teh, hutan pinus dan udara segar. tak hanya itu, kita juga akan mengunjungi goa tokek, objek wisata goa yang dulunya memiliki banyak tokek namun saat ini langka karena diburu untuk obat.
+tiba di stone garden & explore stone garden
 
-Di curug tilu, kalian bisa berendam di aliran sungai.
+3. Goa Pawon (12:15)
 
-siapkan pakaian ganti, alas kaki sepatu dan sendal gunung yang nyaman, trekking pole (bila perlu), jaket dan jas hujan. jangan lupa bawa minum dan snack untuk menjaga stamina selama trekking.
-    [rincian] => 1. Berkumpul di Meeting Point (06:30)
-
-2. Tiba di Ciwangun Indah Camp (09:30)
-
-Perkiraan tiba di base camp CIC dan persiapan untuk melakukan trekking
-
-3. Start Trekking (10:00)
-
-Start Trekking dengan Rute melewati beberapa tempat :
-1. curug Putri
-2. curug Golosor
-3. curug tilu
-4. hutan pinus 
-5. goa tokek
-6. perkebunan teh
+Tiba di goa Pawon & Explore Goa pawon
 
 4. Perjalanan Menuju Pusat Oleh-oleh (15:00)
 
-di tempat oleh-oleh ini banyak menjual makanan ringan yang sangat cocok dijadikan untuk oleh-oleh bagi orang terdekat.
+Di Tempat oleh-oleh ini banyak menjual makanan ringan yang sangat cocok dijadikan untuk oleh-oleh bagi orang terdekat
 
-5. Perjalanan kembali ke meeting point (16:00)
+5. Perjalanan kembali ke meeting point (19:00)
 
-Perjalanan kembali ke meeting point dan trip selesai.
+perjalanan kembali menuju meeting point, dan sampai ketemu di trip berikut nya
     [fasilitas] => Paket tour termasuk :
 
-1. Transportasi dengan bus/hiace
-2. driver, BBM, Tol & Parkir
-3. tiket masuk ciwangun indah camp
-4. kunjungan curug putri
-5. kunjungan curug tilu
-6. kunjungan hutan pinus
-7. kunjungan goa tokek
-8. kunjungan perkebunan teh
-9. Guide lokal selama trekking
-10. Tour Leader
+1. Transportasi PP bus white horse
+2. Tour Leader
+3. Tiket wisata stone garden 
+4. Tiket wisata goa pawon
+5. free air kelapa 1x
 
 Paket Tour tidak termasuk :
 
-1. penambahan destinasi diluar program
-2. pengeluaran keperluan pribadi selama perjalanan
-3. tipping tour leader dan driver
+1. Makan
+2. tip kru sukarela 
     [nama_user] => 
 )

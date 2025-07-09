@@ -2,7 +2,7 @@
 require_once dirname(__FILE__) . '/Midtrans/Midtrans.php';
 
 \Midtrans\Config::$isProduction = false;
-\Midtrans\Config::$serverKey = 'SB-Mid-server-woojna9hDvzc4ie0OT8x3V-F'; // Ganti dengan server key kamu
+\Midtrans\Config::$serverKey = 'SB-Mid-server-woojna9hDvzc4ie0OT8x3V-F';
 
 header('Content-Type: application/json');
 
