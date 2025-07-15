@@ -42,8 +42,8 @@ if ($nama_paket && $harga) {
         ]],
         'customer_details' => [
             'first_name' => $nama_user,
-            'email' => 'edward@gmail.com',
-            'phone' => '081234567890'
+            'email' => 'pieters@gmail.com',
+            'phone' => '0812345678910'
         ]
     ];
 

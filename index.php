@@ -1,226 +1,276 @@
 <?php
-$host = 'localhost';
-$user = 'root';
-$pass = '';
-$db = 'travelapps';
-
-$conn = new mysqli($host, $user, $pass, $db);
-if ($conn->connect_error) {
-    die("Koneksi gagal: " . $conn->connect_error);
+session_start();
+if (!isset($_SESSION['admin'])) {
+    header("Location: login.php");
+    exit;
 }
+$conn = new mysqli('localhost','root','','travelapps');
+if ($conn->connect_error) die("Koneksi gagal: ".$conn->connect_error);
 
-// Pagination
-$limit = 6;
-$page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
-$start_from = ($page - 1) * $limit;
+// Pagination untuk paket
+$limit = 3;
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+$start = ($page - 1) * $limit;
 
-$sql = "SELECT * FROM paket LIMIT $start_from, $limit";
-$result = $conn->query($sql);
+$paketRes = $conn->query("SELECT * FROM paket LIMIT $start, $limit");
+$totalPaket = $conn->query("SELECT COUNT(*) as total FROM paket")->fetch_assoc()['total'];
+$totalPages = ceil($totalPaket / $limit);
 
-// Total data
-$total_result = $conn->query("SELECT COUNT(id) AS total FROM paket");
-$row = $total_result->fetch_assoc();
-$total_pages = ceil($row['total'] / $limit);
+// Data user dan admin
+$userRes = $conn->query("SELECT id, name, email, phone, gender, created_at FROM users");
+$adminRes = $conn->query("SELECT id, email FROM admin");
 ?>
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <title>Daftar Paket Wisata</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Font & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f4f6f8;
-            margin: 0;
-            padding: 0;
-            color: #333;
-        }
-
-        h1 {
-            text-align: center;
-            margin-top: 40px;
-            font-size: 32px;
-            color: #007BFF;
-        }
-
-        .add-button {
-            display: block;
-            width: fit-content;
-            margin: 20px auto;
-            padding: 10px 20px;
-            background-color: #007BFF;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 16px;
-            transition: background-color 0.3s;
-        }
-
-        .add-button i {
-            margin-right: 6px;
-        }
-
-        .add-button:hover {
-            background-color: #0056b3;
-        }
-
-        .card {
-            display: flex;
-            gap: 20px;
-            padding: 20px;
-            overflow-x: auto;
-            margin: 0 auto;
-            max-width: 1200px;
-        }
-
-        .card-item {
-            width: 300px;
-            background: #fff;
-            border-radius: 10px;
-            border: 1px solid #ddd;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            flex-shrink: 0;
-            transition: transform 0.3s;
-        }
-
-        .card-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .card-item img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            border-bottom: 1px solid #eee;
-        }
-
-        .card-item .content {
-            padding: 15px;
-        }
-
-        .card-item h3 {
-            font-size: 18px;
-            margin-bottom: 10px;
-            color: #333;
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 8px;
-        }
-
-        .card-item p {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 10px;
-        }
-
-        .price {
-            font-size: 16px;
-            font-weight: bold;
-            color: #28a745;
-            border-top: 1px solid #ddd;
-            padding-top: 10px;
-        }
-
-        .action-links {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 12px;
-        }
-
-        .action-links a {
-            padding: 6px 12px;
-            border-radius: 4px;
-            color: white;
-            font-size: 13px;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .edit {
-            background-color: #17a2b8;
-        }
-
-        .edit:hover {
-            background-color: #138496;
-        }
-
-        .delete {
-            background-color: #dc3545;
-        }
-
-        .delete:hover {
-            background-color: #c82333;
-        }
-
-        .pagination {
-            text-align: center;
-            margin: 30px 0;
-        }
-
-        .pagination a {
-            padding: 8px 14px;
-            background-color: #007bff;
-            color: white;
-            margin: 0 4px;
-            border-radius: 5px;
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
-
-        .pagination a:hover {
-            background-color: #0056b3;
-        }
-
-        .pagination .active {
-            background-color: #28a745;
-            pointer-events: none;
-        }
-
-        @media (max-width: 768px) {
-            .card {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<title>Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #f4f6f8;
+    display: flex;
+    height: 100vh;
+}
+.sidebar {
+    width: 220px;
+    background: #1565c0;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding-top: 30px;
+}
+.sidebar h2 {
+    margin: 0 0 30px;
+    text-align: center;
+}
+.sidebar a {
+    padding: 15px 20px;
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: .3s;
+}
+.sidebar a:hover, .sidebar a.active {
+    background: #0d47a1;
+}
+.logout {
+    margin-top: auto;
+    text-align: center;
+    padding: 15px;
+}
+.logout button {
+    background: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.main {
+    flex: 1;
+    padding: 30px;
+    overflow-y: auto;
+}
+.section {
+    display: none;
+}
+.section.active {
+    display: block;
+}
+h1 {
+    color: #1565c0;
+    margin-bottom: 20px;
+}
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.card {
+    width: 300px;
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-bottom: 1px solid #ccc;
+}
+.card .info {
+    padding: 15px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.card h3 {
+    font-size: 18px;
+    margin: 0 0 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eee;
+}
+.card p {
+    font-size: 14px;
+    color: #666;
+    flex: 1;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 8px;
+    margin-bottom: 10px;
+}
+.price {
+    font-weight: bold;
+    color: #28a745;
+    padding-top: 8px;
+}
+.action {
+    margin-top: 10px;
+    display: flex;
+    gap: 8px;
+}
+.action a {
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 13px;
+    color: #fff;
+    text-decoration: none;
+}
+.edit {
+    background: #17a2b8;
+}
+.delete {
+    background: #dc3545;
+}
+.pagination {
+    text-align: center;
+    margin-top: 30px;
+}
+.pagination a {
+    padding: 8px 14px;
+    background: #007bff;
+    color: #fff;
+    margin: 0 4px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+.pagination a:hover {
+    background: #0056b3;
+}
+.pagination .active {
+    background: #28a745;
+    pointer-events: none;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    background: #fff;
+}
+th, td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+    font-size: 14px;
+}
+th {
+    background: #1565c0;
+    color: #fff;
+}
+</style>
 </head>
 <body>
 
+<div class="sidebar">
+  <h2>Dashboard</h2>
+  <a href="#" onclick="showSection('paket', this)" class="active"><i class="fas fa-map"></i>Paket Wisata</a>
+  <a href="#" onclick="showSection('pengguna', this)"><i class="fas fa-users"></i>Pengguna</a>
+  <a href="#" onclick="showSection('admin', this)"><i class="fas fa-user-shield"></i>Admin</a>
+  <a href="https://dashboard.sandbox.midtrans.com/beta/transactions?start_created_at=2025-06-14T00%3A00%3A00%2B07%3A00&end_created_at=2025-07-15T23%3A59%3A59%2B07%3A00" target="_blank">
+    <i class="fas fa-receipt"></i>Transaksi
+  </a>
+  <div class="logout">
+    <form method="post" action="logout.php">
+      <button type="submit"><i class="fas fa-sign-out-alt"></i> Logout</button>
+    </form>
+  </div>
+</div>
+
+<div class="main">
+  <div id="paket" class="section active">
     <h1><i class="fas fa-map-marked-alt"></i> Daftar Paket Wisata</h1>
-
-    <a href="create.php" class="add-button"><i class="fas fa-plus-circle"></i> Tambah Paket Wisata</a>
-
-    <div class="card">
-        <?php while($row = $result->fetch_assoc()): ?>
-            <div class="card-item">
-                <img src="uploads/<?php echo htmlspecialchars($row['foto']); ?>" alt="Foto Paket">
-                <div class="content">
-                    <h3><?php echo htmlspecialchars($row['nama_paket']); ?></h3>
-                    <p><?php echo htmlspecialchars($row['deskripsi']); ?></p>
-                    <p class="price">Rp <?php echo number_format($row['harga'], 0, ',', '.'); ?></p>
-                    <div class="action-links">
-                        <a href="update.php?id=<?php echo $row['id']; ?>" class="edit"><i class="fas fa-edit"></i> Edit</a>
-                        <a href="delete.php?id=<?php echo $row['id']; ?>" class="delete" onclick="return confirm('Hapus paket ini?');"><i class="fas fa-trash-alt"></i> Hapus</a>
-                    </div>
-                </div>
+    <a href="create.php" style="display:inline-block;margin-bottom:20px;background:#007bff;color:#fff;padding:10px 16px;border-radius:6px;text-decoration:none;"><i class="fas fa-plus-circle"></i> Tambah Paket</a>
+    <div class="card-container">
+      <?php while($row = $paketRes->fetch_assoc()): ?>
+        <div class="card">
+          <img src="uploads/<?= htmlspecialchars($row['foto']) ?>" alt="Foto">
+          <div class="info">
+            <h3><?= htmlspecialchars($row['nama_paket']) ?></h3>
+            <p><?= htmlspecialchars($row['deskripsi']) ?></p>
+            <div class="price">Rp <?= number_format($row['harga'], 0, ',', '.') ?></div>
+            <div class="action">
+              <a href="update.php?id=<?= $row['id'] ?>" class="edit"><i class="fas fa-edit"></i></a>
+              <a href="delete.php?id=<?= $row['id'] ?>" class="delete" onclick="return confirm('Hapus paket ini?')"><i class="fas fa-trash-alt"></i></a>
             </div>
-        <?php endwhile; ?>
+          </div>
+        </div>
+      <?php endwhile; ?>
     </div>
-
     <div class="pagination">
-        <?php for ($i = 1; $i <= $total_pages; $i++): ?>
-            <a href="?page=<?= $i ?>" class="<?= ($i == $page) ? 'active' : '' ?>"><?= $i ?></a>
-        <?php endfor; ?>
+      <?php for($i=1;$i<=$totalPages;$i++): ?>
+        <a href="?page=<?= $i ?>" class="<?= ($i==$page)?'active':'' ?>"><?= $i ?></a>
+      <?php endfor; ?>
     </div>
+  </div>
+
+  <div id="pengguna" class="section">
+    <h1><i class="fas fa-users"></i> Daftar Pengguna</h1>
+    <table>
+      <tr><th>ID</th><th>Nama</th><th>Email</th><th>Telepon</th><th>Jenis Kelamin</th><th>Terdaftar</th></tr>
+      <?php while($u = $userRes->fetch_assoc()): ?>
+        <tr>
+          <td><?= $u['id'] ?></td>
+          <td><?= htmlspecialchars($u['name']) ?></td>
+          <td><?= htmlspecialchars($u['email']) ?></td>
+          <td><?= htmlspecialchars($u['phone']) ?></td>
+          <td><?= htmlspecialchars($u['gender']) ?></td>
+          <td><?= htmlspecialchars($u['created_at']) ?></td>
+        </tr>
+      <?php endwhile; ?>
+    </table>
+  </div>
+
+  <div id="admin" class="section">
+    <h1><i class="fas fa-user-shield"></i> Daftar Admin</h1>
+    <table>
+      <tr><th>ID</th><th>Email</th></tr>
+      <?php while($a = $adminRes->fetch_assoc()): ?>
+        <tr>
+          <td><?= $a['id'] ?></td>
+          <td><?= htmlspecialchars($a['email']) ?></td>
+        </tr>
+      <?php endwhile; ?>
+    </table>
+  </div>
+</div>
+
+<script>
+function showSection(id, el) {
+  document.querySelectorAll('.sidebar a').forEach(a=>a.classList.remove('active'));
+  if (el) el.classList.add('active');
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+</script>
 
 </body>
 </html>
