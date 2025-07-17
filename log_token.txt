@@ -1,42 +1,36 @@
 Array
 (
-    [nama_paket] => Kota Lama Bandung
-    [harga] => 350000.00
-    [deskripsi] => Kota Lama Bandung adalah kawasan bersejarah di Kota Bandung yang menawarkan sekilas nostalgia ke masa kolonial Belanda. Di sini, pengunjung bisa melihat arsitektur bangunan tua yang khas dengan gaya art deco dan kolonial, yang masih terjaga hingga saat ini. Berlokasi di sekitar Alun-Alun Bandung dan Jalan Braga, Kota Lama Bandung dikenal sebagai pusat aktivitas budaya dan seni, dengan berbagai kafe, galeri seni, dan toko antik yang menambah pesona klasiknya. 
+    [nama_paket] => Stone Garden
+    [harga] => 250000.00
+    [deskripsi] => Tau gak kalau ada taman batu yang diduga dulunya merupakan lautan?  ternyata itu loh sejarah dari stone garden di bandung. di trip ini kita menikmati pemandangan kota bandung di antara bukit batuan ini. kemudian, kita akan mengunjungi goa pawon di mana terdapat fosil kerangka 7 manusia purba yang berasal dari 5.000 - 12.000 tahun silam. penasaran? join tripnya minggu ini!
+    [rincian] => 1. Berkumpul di Meeting Point (07:00)
 
-Kawasan ini juga sering menjadi lokasi pameran dan acara budaya, menarik wisatawan yang ingin merasakan atmosfer Bandung tempo dulu. Dengan suasana yang unik dan bersejarah, Kota Lama Bandung menjadi destinasi favorit bagi penggemar sejarah, arsitektur, dan fotografi.
-    [rincian] => 1. Berkumpul di meeting point (07:00)
+2. Stone Garden (09:30)
 
-2. Jalan Braga (09:00)
+tiba di stone garden & explore stone garden
 
-Berjalan kaki menyusuri Jalan Braga, menikmati suasana klasik dengan bangunan art deco yang ikonik.
+3. Goa Pawon (12:15)
 
-3. Gedung Merdeka (Museum Konferensi Asia Afrika) (12:30)
+Tiba di goa Pawon & Explore Goa pawon
 
-Mengunjungi Gedung Merdeka yang bersejarah, tempat berlangsungnya Konferensi Asia Afrika tahun 1955. Anda bisa melihat koleksi museum yang mencakup foto, dokumen, dan artefak penting. 
+4. Perjalanan Menuju Pusat Oleh-oleh (15:00)
 
-4. Jalan Asia Afrika (14:00)
+Di Tempat oleh-oleh ini banyak menjual makanan ringan yang sangat cocok dijadikan untuk oleh-oleh bagi orang terdekat
 
-Menyusuri Jalan Asia Afrika untuk melihat gedung-gedung kolonial lain, seperti Gedung De Majestic yang sering digunakan untuk acara seni dan budaya. Anda bisa berfoto dan menikmati arsitektur uniknya.
+5. Perjalanan kembali ke meeting point (19:00)
 
-5. Alun-alun bandung
-(15:00)
-
-Setelah dari museum dan jalan asia afrika, anda akan dibawa untuk mengelilingi dan merasakan suasana alun-alun dari kota bandung.
-
-6. Setelah Berkeliling Trip Selesai.
+perjalanan kembali menuju meeting point, dan sampai ketemu di trip berikut nya
     [fasilitas] => Paket tour termasuk :
 
-1. Transport PP (Toll, Parkir, BBM) Hiace white horse
-2. Tiket masuk gedung merdeka (museum konferensi asia afrika)
-3. Tiket masuk gedung de majestic
-4. Tour leader
+1. Transportasi PP bus white horse
+2. Tour Leader
+3. Tiket wisata stone garden 
+4. Tiket wisata goa pawon
+5. free air kelapa 1x
 
 Paket Tour tidak termasuk :
 
 1. Makan
-2. Penambahan atraksi wisata diluar program
-3. Pengeluaran pribadi selama perjalanan
-
+2. tip kru sukarela 
     [nama_user] => 
 )
