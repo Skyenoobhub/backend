@@ -1,13 +1,13 @@
 <?php
 session_start();
 
-// Jika sudah login, redirect ke index.php
 if (isset($_SESSION['admin'])) {
     header("Location: index.php");
     exit;
 }
 
 $error = '';
+$success = isset($_GET['success']) ? "Akun berhasil dibuat. Silakan login." : '';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'] ?? '';
@@ -52,83 +52,90 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
+    * {
+      box-sizing: border-box;
+    }
     body {
+      margin: 0;
       font-family: 'Poppins', sans-serif;
-      background: #f0f2f5;
+      background-color: #f2f5f8;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       height: 100vh;
     }
-    .login-box {
+    .form-container {
       background: #fff;
-      padding: 40px 50px;
-      border-radius: 14px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      padding: 40px 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 400px;
       text-align: center;
-      width: 420px;
     }
-    .login-box h2 {
-      margin-bottom: 24px;
+    .form-container h2 {
       color: #1565c0;
-      font-weight: bold;
+      margin-bottom: 25px;
     }
     .input-group {
       position: relative;
       margin-bottom: 18px;
+      text-align: left;
     }
     .input-group i {
       position: absolute;
       top: 12px;
       left: 12px;
-      color: #888;
-      font-size: 14px;
+      color: #aaa;
     }
     .input-group input {
       width: 100%;
       padding: 10px 12px 10px 38px;
       border: 1px solid #ccc;
       border-radius: 6px;
-      outline: none;
       font-size: 14px;
+      outline: none;
     }
     button {
       width: 100%;
       padding: 12px;
+      background-color: #1565c0;
       border: none;
-      border-radius: 6px;
-      background: #1565c0;
       color: white;
       font-weight: bold;
       font-size: 15px;
+      border-radius: 6px;
       cursor: pointer;
       margin-top: 10px;
     }
-    .error {
-      color: red;
+    .form-footer {
+      margin-top: 18px;
       font-size: 14px;
-      margin-bottom: 10px;
     }
-    a {
-      display: block;
-      margin-top: 16px;
+    .form-footer a {
       color: #1565c0;
       text-decoration: none;
-      font-size: 14px;
-    }
-    a strong {
       font-weight: bold;
+    }
+    .error {
+      color: red;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+    .success {
+      color: green;
+      font-size: 13px;
+      margin-bottom: 10px;
     }
   </style>
 </head>
 <body>
 
-  <div class="login-box">
+  <div class="form-container">
     <h2><i class="fas fa-sign-in-alt"></i> Login Admin</h2>
 
-    <?php if ($error): ?>
-      <div class="error"><?= htmlspecialchars($error) ?></div>
-    <?php endif; ?>
+    <?php if (!empty($success)) echo '<div class="success">' . htmlspecialchars($success) . '</div>'; ?>
+    <?php if (!empty($error)) echo '<div class="error">' . htmlspecialchars($error) . '</div>'; ?>
 
     <form method="POST">
       <div class="input-group">
@@ -142,7 +149,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <button type="submit">Masuk</button>
     </form>
 
-    <a href="admin_register.php"><i class="fas fa-user-plus"></i> Belum punya akun? <strong>Daftar</strong></a>
+    <div class="form-footer">
+      <i class="fas fa-user-plus"></i> Belum punya akun? <a href="admin_register.php">Daftar</a>
+    </div>
   </div>
 
 </body>

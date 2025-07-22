@@ -4,10 +4,10 @@ if (!isset($_SESSION['admin'])) {
     header("Location: login.php");
     exit;
 }
-$conn = new mysqli('localhost','root','','travelapps');
+$conn = new mysqli('localhost', 'root', '', 'travelapps');
 if ($conn->connect_error) die("Koneksi gagal: ".$conn->connect_error);
 
-// Pagination untuk paket
+// Pagination paket
 $limit = 3;
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $start = ($page - 1) * $limit;
@@ -18,7 +18,7 @@ $totalPages = ceil($totalPaket / $limit);
 
 // Data user dan admin
 $userRes = $conn->query("SELECT id, name, email, phone, gender, created_at FROM users");
-$adminRes = $conn->query("SELECT id, email FROM admin");
+$adminRes = $conn->query("SELECT id, nama, email FROM admin");
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -28,6 +28,7 @@ $adminRes = $conn->query("SELECT id, email FROM admin");
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
+/* (CSS tidak diubah dari versi sebelumnya untuk mempertahankan struktur tampilan dashboard) */
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
@@ -195,9 +196,7 @@ th {
   <a href="#" onclick="showSection('paket', this)" class="active"><i class="fas fa-map"></i>Paket Wisata</a>
   <a href="#" onclick="showSection('pengguna', this)"><i class="fas fa-users"></i>Pengguna</a>
   <a href="#" onclick="showSection('admin', this)"><i class="fas fa-user-shield"></i>Admin</a>
-  <a href="https://dashboard.sandbox.midtrans.com/beta/transactions?start_created_at=2025-06-14T00%3A00%3A00%2B07%3A00&end_created_at=2025-07-15T23%3A59%3A59%2B07%3A00" target="_blank">
-    <i class="fas fa-receipt"></i>Transaksi
-  </a>
+  <a href="https://dashboard.sandbox.midtrans.com/beta/transactions" target="_blank"><i class="fas fa-receipt"></i>Transaksi</a>
   <div class="logout">
     <form method="post" action="logout.php">
       <button type="submit"><i class="fas fa-sign-out-alt"></i> Logout</button>
@@ -252,10 +251,11 @@ th {
   <div id="admin" class="section">
     <h1><i class="fas fa-user-shield"></i> Daftar Admin</h1>
     <table>
-      <tr><th>ID</th><th>Email</th></tr>
+      <tr><th>ID</th><th>Nama</th><th>Email</th></tr>
       <?php while($a = $adminRes->fetch_assoc()): ?>
         <tr>
           <td><?= $a['id'] ?></td>
+          <td><?= htmlspecialchars($a['nama']) ?></td>
           <td><?= htmlspecialchars($a['email']) ?></td>
         </tr>
       <?php endwhile; ?>
@@ -265,9 +265,9 @@ th {
 
 <script>
 function showSection(id, el) {
-  document.querySelectorAll('.sidebar a').forEach(a=>a.classList.remove('active'));
+  document.querySelectorAll('.sidebar a').forEach(a => a.classList.remove('active'));
   if (el) el.classList.add('active');
-  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
 }
 </script>
